@@ -3,6 +3,7 @@ package workshop.option;
 import workshop.action.product.AddProductAction;
 import workshop.action.product.DeleteProductAction;
 import workshop.action.product.PrintAllProductAction;
+import workshop.action.product.UpdateProductAction;
 import workshop.dao.ProductDao;
 
 public class OptionFactoryImpl implements OptionFactory {
@@ -19,6 +20,7 @@ public class OptionFactoryImpl implements OptionFactory {
         option.actions.add(new AddProductAction(productDao));
         option.actions.add(new PrintAllProductAction(productDao));
         option.actions.add(new DeleteProductAction(productDao));
+        option.actions.add(new UpdateProductAction(productDao));
         return option;
     }
 
