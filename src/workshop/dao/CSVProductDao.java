@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -22,6 +23,9 @@ public class CSVProductDao implements ProductDao {
 
     @Override
     public List<Product> getAllProducts() {
+        if(!Files.exists(csvFilePath)){
+            return Collections.emptyList();
+        }
         try {
             List<String> lines = Files.readAllLines(csvFilePath);
             List<Product> products = new ArrayList<>();
