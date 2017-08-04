@@ -43,15 +43,19 @@ public class CSVProductDao implements ProductDao {
 
     @Override
     public Product addProduct(Product product) {
-        try {
             int id = genId(product);
-            Product newProduct = new Product(id, product);
+            return addProductWithId(product, id);
+    }
+
+    private Product addProductWithId(Product product, int id) {
+        Product newProduct = new Product(id, product);
+        try {
             Files.write(csvFilePath, mapToNewLine(newProduct).getBytes(),
                     StandardOpenOption.APPEND , StandardOpenOption.CREATE);
-            return newProduct;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return newProduct;
     }
 
 
@@ -62,7 +66,7 @@ public class CSVProductDao implements ProductDao {
     @Override
     public void updateProduct(Product product) {
         removeProduct(product);
-        addProduct(product);
+        addProductWithId(product, product.getId());
     }
 
     @Override
