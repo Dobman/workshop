@@ -1,6 +1,7 @@
 package workshop.option;
 
 import workshop.action.product.AddProductAction;
+import workshop.action.product.DeleteProductAction;
 import workshop.action.product.PrintAllProductAction;
 import workshop.dao.ProductDao;
 
@@ -17,6 +18,7 @@ public class OptionFactoryImpl implements OptionFactory {
         Option option = new Option(1, "Product options");
         option.actions.add(new AddProductAction(productDao));
         option.actions.add(new PrintAllProductAction(productDao));
+        option.actions.add(new DeleteProductAction(productDao));
         return option;
     }
 

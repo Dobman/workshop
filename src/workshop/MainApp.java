@@ -9,6 +9,7 @@ public class MainApp {
 
     public static void main(String[] args){
         CSVProductDao csvProductDao = new CSVProductDao(Paths.get("products.csv"));
+
         ApplicationRunner applicationRunner =
                 new ApplicationRunner(System.in, new OptionFactoryImpl(csvProductDao));
         applicationRunner.run();

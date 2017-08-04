@@ -13,7 +13,7 @@ public class AddProductAction implements Action {
     public AddProductAction(ProductDao productDao) {
         this.productDao = productDao;
     }
-    
+
     @Override
     public String getMessage() {
         return "Add product";
